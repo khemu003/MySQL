@@ -1,0 +1,118 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bank               |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| prac               |
+| regex              |
+| regex2             |
+| sakila             |
+| sys                |
++--------------------+
+10 rows in set (0.03 sec)
+
+mysql> use prac;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_prac |
++----------------+
+| data           |
+| ddl_dml        |
+| emp            |
+| first          |
+| five           |
+| four           |
+| gp             |
+| second         |
+| third          |
++----------------+
+9 rows in set (0.01 sec)
+
+mysql> select *from emp;
++------+-------+--------+
+| id   | name  | salary |
++------+-------+--------+
+|  101 | ankit |   2000 |
+|  102 | jay   |   2300 |
+|  103 | rahul |   2500 |
+|  104 | yash  |   5000 |
+|  105 | ankit |   4000 |
++------+-------+--------+
+5 rows in set (0.08 sec)
+
+mysql> create view emp_v  as (select name,salary from emp);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select * from emp_v;
++-------+--------+
+| name  | salary |
++-------+--------+
+| ankit |   2000 |
+| jay   |   2300 |
+| rahul |   2500 |
+| yash  |   5000 |
+| ankit |   4000 |
++-------+--------+
+5 rows in set (0.01 sec)
+
+mysql> update emp_v set salary=
+    -> 10000 where name="jay";
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *From emp_v;
++-------+--------+
+| name  | salary |
++-------+--------+
+| ankit |   2000 |
+| jay   |  10000 |
+| rahul |   2500 |
+| yash  |   5000 |
+| ankit |   4000 |
++-------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select *from emp;
++------+-------+--------+
+| id   | name  | salary |
++------+-------+--------+
+|  101 | ankit |   2000 |
+|  102 | jay   |  10000 |
+|  103 | rahul |   2500 |
+|  104 | yash  |   5000 |
+|  105 | ankit |   4000 |
++------+-------+--------+
+5 rows in set (0.00 sec)
+
+mysql> update emp set name="akash" where id=105;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from emp;
++------+-------+--------+
+| id   | name  | salary |
++------+-------+--------+
+|  101 | ankit |   2000 |
+|  102 | jay   |  10000 |
+|  103 | rahul |   2500 |
+|  104 | yash  |   5000 |
+|  105 | akash |   4000 |
++------+-------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp_v;
++-------+--------+
+| name  | salary |
++-------+--------+
+| ankit |   2000 |
+| jay   |  10000 |
+| rahul |   2500 |
+| yash  |   5000 |
+| akash |   4000 |
++-------+--------+
+5 rows in set (0.00 sec)
