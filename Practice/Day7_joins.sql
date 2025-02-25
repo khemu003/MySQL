@@ -69,3 +69,26 @@ from product as p right join orders as o
 on p.pid = o.product_id;
 
 
+-- self join ==> when a table is match with it's own table.
+use  regex2;
+
+create table staff(eid int, ename varchar(20), manager_id int);
+
+insert into staff values
+(10, "tushar", null),
+(11, "aman", 13),
+(12, "sakshi", 10),
+(13, "shubham", 11),
+(14, "ujjwal", 12);
+
+select * from staff;
+
+select emp.eid, emp.ename, emp.manager_id, mng.ename as manager_name
+from staff as emp join staff as mng
+where emp.manager_id = mng.eid;
+
+
+
+
+
+
